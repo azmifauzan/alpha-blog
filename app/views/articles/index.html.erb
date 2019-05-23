@@ -13,12 +13,14 @@
   <tr>
     <th>Title</th>
     <th>Description</th>
+    <th>User</th>
     <th>&nbsp</th>
   </tr>
   <% @article.each do |article| %>
   <tr>
   	<td><%= link_to article.title, article_path(article) %></td>
-  	<td><%= article.description %></td>
+  	<td><%= truncate(article.description, length: 100) %></td>
+    <td><%= article.user.username %></td>
   	<td><%= link_to "Edit", edit_article_path(article), class: "btn btn-warning btn-sm" %> <%= link_to "Delete", article_path(article), method: :delete, data: {confirm: "are you sure?"}, class: "btn btn-danger btn-sm"  %></td>
   </tr>
   <% end %>
